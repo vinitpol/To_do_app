@@ -2,7 +2,7 @@
 **Live Demo**: [To-Do List App](https://to-do-app-alpha-sepia.vercel.app/)
 
 ## Project Overview  
-This **To-Do List** application was developed using **HTML5**, **CSS3**, and **JavaScript** to help users efficiently manage their daily tasks. It features a sleek, minimalist design with intuitive functionality, ensuring that organizing tasks is both simple and enjoyable.
+This **To-Do List** application was developed using **HTML5**, **CSS3**, and **JavaScript & Flask** to help users efficiently manage their daily tasks. It features a sleek, minimalist design with intuitive functionality, ensuring that organizing tasks is both simple and enjoyable.
 
 ## Key Features  
 - **Add New Tasks**: Quickly input new tasks to keep track of your daily agenda.
