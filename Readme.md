@@ -13,7 +13,7 @@ This **To-Do List** application was developed using **HTML5**, **CSS3**, and **J
 ## Technologies Used  
 - **HTML5**: Structured the layout of the application.
 - **CSS3**: Styled the interface for a clean and modern look.
-- **JavaScript & Flask**: Implemented the core functionalities including task management and filtering.
+- **JavaScript**: Implemented the core functionalities including task management and filtering.
 
 ## Future Improvements  
 - Enhanced user experience with animations and transitions.
