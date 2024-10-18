@@ -13,6 +13,20 @@ addButton.addEventListener("click", add)
 deleteAllButton.addEventListener("click", deleteAll)
 deleteSButton.addEventListener("click", deleteS)
 
+// Below code added for cokies and local storage 
+function saveToLocalStorage() {
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+}
+
+function loadFromLocalStorage() {
+    const savedTodos = localStorage.getItem('todoList');
+    if (savedTodos) {
+        todoList = JSON.parse(savedTodos);
+        update();
+        addinmain(todoList);
+    }
+}
+
 
 //event listeners for filtersk
 document.addEventListener('click', (e) => {
@@ -57,34 +71,84 @@ function update() {
 
 //adds the task in main list
 
+// function add() {
+//     var value = todoInput.value;
+//     if (value === '') {
+//         alert("😮 Task cannot be empty")
+//         return;
+//     }
+//     todoList.push({
+//         task: value,
+//         id: Date.now().toString(),
+//         complete: false,
+//     });
+
+//     todoInput.value = "";
+//     update();
+//     addinmain(todoList);
+// }
+
+
+
+// Modify your add() function
 function add() {
     var value = todoInput.value;
     if (value === '') {
         alert("😮 Task cannot be empty")
         return;
     }
+
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+
     todoList.push({
         task: value,
         id: Date.now().toString(),
         complete: false,
+        time: timeString
     });
 
     todoInput.value = "";
     update();
     addinmain(todoList);
+    saveToLocalStorage(); // Save after adding
 }
 
 
 //renders the main list and views on the main content
 
+// function addinmain(todoList) {
+//     allTodos.innerHTML = ""
+//     todoList.forEach(element => {
+//         var x = `<li id=${element.id} class="todo-item">
+//     <p id="task"> ${element.complete ? `<strike>${element.task}</strike>` : element.task} </p>
+//     <div class="todo-actions">
+//                 <button class="complete btn btn-success">
+//                     <i class=" ci bx bx-check bx-sm"></i>
+//                 </button>
+
+//                 <button class="delete btn btn-error" >
+//                     <i class="di bx bx-trash bx-sm"></i>
+//                 </button>
+//             </div>
+//         </li>`
+//         allTodos.innerHTML += x
+//     });
+// }
+
+
+
 function addinmain(todoList) {
     allTodos.innerHTML = ""
     todoList.forEach(element => {
         var x = `<li id=${element.id} class="todo-item">
-    <p id="task"> ${element.complete ? `<strike>${element.task}</strike>` : element.task} </p>
-    <div class="todo-actions">
+            <div>
+                <p id="task"> ${element.complete ? `<strike>${element.task}</strike>` : element.task} </p>
+                <small class="text-gray-500">${element.time}</small>
+            </div>
+            <div class="todo-actions">
                 <button class="complete btn btn-success">
-                    <i class=" ci bx bx-check bx-sm"></i>
+                    <i class="ci bx bx-check bx-sm"></i>
                 </button>
 
                 <button class="delete btn btn-error" >
@@ -98,6 +162,18 @@ function addinmain(todoList) {
 
 
 //deletes and indiviual task and update all the list
+// function deleteTodo(e) {
+//     var deleted = e.target.parentElement.parentElement.getAttribute('id');
+//     todoList = todoList.filter((ele) => {
+//         return ele.id != deleted
+//     })
+
+//     update();
+//     addinmain(todoList);
+
+// }
+
+// Modify deleteTodo function
 function deleteTodo(e) {
     var deleted = e.target.parentElement.parentElement.getAttribute('id');
     todoList = todoList.filter((ele) => {
@@ -106,10 +182,30 @@ function deleteTodo(e) {
 
     update();
     addinmain(todoList);
-
+    saveToLocalStorage(); // Save after deleting
 }
 
 //completes indiviaula task and updates all the list
+// function completeTodo(e) {
+//     var completed = e.target.parentElement.parentElement.getAttribute('id');
+//     todoList.forEach((obj) => {
+//         if (obj.id == completed) {
+//             if (obj.complete == false) {
+//                 obj.complete = true
+//                 e.target.parentElement.parentElement.querySelector("#task").classList.add("line");
+//             } else {
+//                 obj.complete = false
+
+//                 e.target.parentElement.parentElement.querySelector("#task").classList.remove("line");
+//             }
+//         }
+//     })
+
+//     update();
+//     addinmain(todoList);
+// }
+
+// Modify completeTodo function
 function completeTodo(e) {
     var completed = e.target.parentElement.parentElement.getAttribute('id');
     todoList.forEach((obj) => {
@@ -119,7 +215,6 @@ function completeTodo(e) {
                 e.target.parentElement.parentElement.querySelector("#task").classList.add("line");
             } else {
                 obj.complete = false
-
                 e.target.parentElement.parentElement.querySelector("#task").classList.remove("line");
             }
         }
@@ -127,30 +222,48 @@ function completeTodo(e) {
 
     update();
     addinmain(todoList);
+    saveToLocalStorage(); // Save after completing
 }
 
 
 //deletes all the tasks
+// function deleteAll(todo) {
+
+//     todoList = []
+
+//     update();
+//     addinmain(todoList);
+
+// }
+
+// Modify deleteAll function
 function deleteAll(todo) {
-
     todoList = []
-
     update();
     addinmain(todoList);
-
+    saveToLocalStorage(); // Save after deleting all
 }
-
 //deletes only completed task
-function deleteS(todo) {
+// function deleteS(todo) {
 
+//     todoList = todoList.filter((ele) => {
+//         return !ele.complete;
+//     })
+
+
+//     update();
+//     addinmain(todoList);
+
+// }
+
+// Modify deleteS function
+function deleteS(todo) {
     todoList = todoList.filter((ele) => {
         return !ele.complete;
     })
-
-
     update();
     addinmain(todoList);
-
+    saveToLocalStorage(); // Save after deleting selected
 }
 
 
@@ -166,3 +279,7 @@ function viewRemaining() {
 function viewAll() {
     addinmain(todoList);
 }
+
+// code script to load saved todos when the page loads
+document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
+

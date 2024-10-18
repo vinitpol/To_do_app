@@ -289,3 +289,12 @@ dropdown*/
         min-width: 96%;
     }
 }
+
+
+/* claudi.ai */
+.text-gray-500 {
+    color: black;
+    animation: backwards;
+    animation-duration: 2s;
+    font-size: 0.875rem;
+}
