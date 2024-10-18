@@ -91,6 +91,7 @@ function update() {
 
 
 // Modify your add() function
+
 function add() {
     var value = todoInput.value;
     if (value === '') {
@@ -99,21 +100,30 @@ function add() {
     }
 
     const now = new Date();
-    const timeString = now.toLocaleTimeString();
+    // Format date as "DD Month YYYY"
+    const dateString = now.toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+    const timeString = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
 
     todoList.push({
         task: value,
         id: Date.now().toString(),
         complete: false,
+        date: dateString,
         time: timeString
     });
 
     todoInput.value = "";
     update();
     addinmain(todoList);
-    saveToLocalStorage(); // Save after adding
+    saveToLocalStorage();
 }
-
 
 //renders the main list and views on the main content
 
@@ -137,14 +147,15 @@ function add() {
 // }
 
 
-
 function addinmain(todoList) {
     allTodos.innerHTML = ""
     todoList.forEach(element => {
         var x = `<li id=${element.id} class="todo-item">
             <div>
                 <p id="task"> ${element.complete ? `<strike>${element.task}</strike>` : element.task} </p>
-                <small class="text-gray-500">${element.time}</small>
+                <small class="text-gray-500">
+                    Added on ${element.date} at ${element.time}
+                </small>
             </div>
             <div class="todo-actions">
                 <button class="complete btn btn-success">
