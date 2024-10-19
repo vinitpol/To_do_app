@@ -294,3 +294,19 @@ function viewAll() {
 // code script to load saved todos when the page loads
 document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
 
+
+
+// mobile media_query to set vh unit
+function setMobileHeight() {
+    // First we get the viewport height and multiply it by 1% to get a value for a vh unit
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// We listen to the resize event
+window.addEventListener('resize', setMobileHeight);
+window.addEventListener('orientationchange', setMobileHeight);
+// Initial call
+setMobileHeight();
+
