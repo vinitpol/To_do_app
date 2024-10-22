@@ -11,7 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="to_do_icon.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+
     <title>To Do Application</title>
 </head>
 
@@ -24,8 +24,11 @@
             <h1>Todo List</h1>
 
             <div class="input-section">
-                <input id="todo-input" type="text" placeholder="📑 Add your todo here.."
-                    class="input w-full max-w-xs" />
+                <div class="w-full max-w-xs d-flex">
+                    <textarea id="todo-input" placeholder="📑 Add your todo here..." class="input input-txt"></textarea>
+                    <input type="datetime-local" id="dueDate" class="input input-date">
+                </div>
+
                 <button id="add-button" class="btn btn-add ">
                     <i class="bx bx-plus bx-sm"></i>
                 </button>
