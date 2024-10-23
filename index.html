@@ -24,7 +24,7 @@
             <h1>Todo List</h1>
 
             <div class="input-section">
-                <div class="w-full max-w-xs d-flex">
+                <div class="w-full max-w-xs d-flex gap-2">
                     <textarea id="todo-input" placeholder="📑 Add your todo here..." class="input input-txt"></textarea>
                     <input type="datetime-local" id="dueDate" class="input input-date">
                 </div>
@@ -73,11 +73,16 @@
                 <p>Total Tasks: <span id="r-count">0</span></p>
             </div>
         </div>
+
+        <!-- Add notification control div -->
+        <div id="notification-controls" class="notification-controls" style="display: none;">
+            <button id="stop-alarm" class="btn btn-error">Stop Alarm</button>
+            <button id="clear-notification" class="btn btn-ghost">Clear Notification</button>
+        </div>
     </div>
 
     <!-- JS -->
     <script src="index.js"></script>
-
 </body>
 
 </html>
