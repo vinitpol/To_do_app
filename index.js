@@ -170,11 +170,10 @@ function addinmain(todoList) {
   todoList.forEach((element) => {
     var x = `<li id=${element.id} class="todo-item">
             <div>
-                <p id="task"> ${
-                  element.complete
-                    ? `<strike>${element.task}</strike>`
-                    : element.task
-                } </p>
+                <p id="task"> ${element.complete
+        ? `<strike>${element.task}</strike>`
+        : element.task
+      } </p>
                 <small class="text-gray-500">
                     Due on ${new Date(element.dueDate).toLocaleString()}
                 </small>
@@ -376,9 +375,9 @@ function checkDueTasksImmediately() {
 
 // mobile media_query to set vh unit
 function setMobileHeight() {
-  // First we get the viewport height and multiply it by 1% to get a value for a vh unit
+
   let vh = window.innerHeight * 0.01;
-  // Then we set the value in the --vh custom property to the root of the document
+
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 }
 
@@ -387,3 +386,9 @@ window.addEventListener("resize", setMobileHeight);
 window.addEventListener("orientationchange", setMobileHeight);
 // Initial call
 setMobileHeight();
+
+
+
+
+
+
