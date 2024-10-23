@@ -96,11 +96,15 @@ header .input-section {
 
 .input-section input {
     margin-right: 10px;
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
-.max-w-xs {
+/* .max-w-xs {
     max-width: 20rem;
+} */
+
+.d-flex {
+    display: flex;
 }
 
 .w-full {
@@ -115,6 +119,14 @@ header .input-section {
     padding: 0rem 1rem;
     font-size: 1.2rem;
     line-height: 2;
+}
+
+.input-txt {
+    width: 55%;
+}
+
+.input-date {
+    width: 45%;
 }
 
 /* todofilters */
