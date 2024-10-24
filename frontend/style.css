@@ -1,0 +1,583 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800;900&display=swap');
+
+/* for whole documents */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* for hide scroll bar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* @keyframes zoomInOut {
+    0% {
+        background-size: 100%;
+    }
+
+    50% {
+        background-size: 120%;
+    }
+
+    100% {
+        background-size: 100%;
+    }
+} */
+
+body {
+    position: relative;
+    height: 100vh;
+    min-height: -webkit-fill-available;
+    /* For iOS Safari */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(4, 4, 35);
+    background-image: url(point.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* animation: zoomInOut 5s ease-in-out infinite; */
+    overflow: hidden;
+}
+
+body {
+    will-change: background-size, background-position, opacity;
+    transition: all 0.3s ease-in-out;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 400px;
+    min-width: 500px;
+    max-width: 1000px;
+    background-image: linear-gradient(aqua, rgb(249, 146, 164));
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* header */
+
+.container header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+}
+
+
+/* input-section */
+
+header .input-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.input-section input {
+    margin-right: 10px;
+    /* max-width: 100%; */
+}
+
+/* .max-w-xs {
+    max-width: 20rem;
+} */
+
+.d-flex {
+    display: flex;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.input {
+    border-radius: 0.5rem;
+    height: 3rem;
+    border-width: 2px black solid;
+    flex-shrink: 1;
+    padding: 0rem 1rem;
+    font-size: 1.2rem;
+    line-height: 2;
+}
+
+.input-txt {
+    width: 55%;
+    resize: none;
+}
+
+.input-date {
+    width: 45%;
+}
+
+/* todofilters */
+
+.todos-filter,
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+.filters {
+    margin-top: 10px;
+}
+
+
+.todos-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100%;
+    max-height: 54vh;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.todos-list .todo-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+}
+
+.todo-item {
+    background-color: wheat;
+    border-radius: 12px;
+    margin-bottom: 5px;
+}
+
+.todo-item p {
+    margin-right: 10px;
+    font-size: 1.4rem;
+}
+
+.todo-item .todo-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+}
+
+.todo-actions button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.di,
+.ci {
+    pointer-events: none;
+}
+
+
+.line {
+    text-decoration: line-through;
+}
+
+
+/*buttons styling*/
+.btn {
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    outline: none;
+    text-align: center;
+    border-radius: 0.5rem;
+    height: 3rem;
+    min-height: 3rem;
+    text-transform: uppercase;
+    border-width: 1px;
+    animation: button-pop var(--animation-btn, .25s)ease-in-out;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1em;
+    text-decoration-line: none;
+    transition: .2s all cubic-bezier(.4, 0, .2, 1);
+    display: inline-flex;
+}
+
+.btn:hover {
+    background-color: rgb(108, 109, 110);
+    color: white;
+}
+
+
+.btn-add {
+    background-color: green;
+    color: white
+}
+
+.btn-add:hover {
+    background-color: white;
+    color: rgb(255, 221, 0);
+}
+
+.btn-success {
+    opacity: 1;
+    background-color: rgb(50, 177, 50);
+    color: white
+}
+
+.btn-success:hover {
+    background-color: white;
+    color: rgb(50, 177, 50);
+}
+
+.btn-error {
+    opacity: 1;
+    background-color: rgb(246, 77, 4);
+    color: white
+}
+
+.btn-error:hover {
+    background-color: white;
+    color: rgb(246, 77, 4);
+}
+
+/*
+dropdown*/
+.dropbtn {
+    background-color: green;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: white;
+    color: yellowgreen;
+}
+
+
+
+/* Responsive */
+@media only screen and (max-width: 530px) {
+    .container {
+        margin: 0 20px;
+        max-width: 96%;
+        min-width: 96%;
+    }
+}
+
+
+/* claudi.ai */
+.text-gray-500 {
+    color: black;
+    animation: backwards;
+    animation-duration: 2s;
+    font-size: 0.875rem;
+}
+
+/* For phones (portrait) */
+@media screen and (max-width: 428px) {
+    body {
+        background-size: cover;
+        /* animation: zoomInOut 15s ease-in-out infinite; */
+        /* Simpler animation for mobile */
+    }
+
+    /* Adjust animation for better mobile performance */
+    /* @keyframes zoomInOut {
+        0% {
+            background-size: 110%;
+        }
+
+        50% {
+            background-size: 120%;
+        }
+
+        100% {
+            background-size: 110%;
+        }
+    } */
+}
+
+/* For phones (landscape) */
+@media screen and (max-width: 926px) and (orientation: landscape) {
+    body {
+        background-size: cover;
+        background-position: center;
+        animation: zoomPulse 20s ease-in-out infinite;
+    }
+}
+
+/* For tablets (portrait) */
+@media screen and (min-width: 429px) and (max-width: 820px) {
+    body {
+        animation: zoomPan 25s ease-in-out infinite;
+    }
+}
+
+/* For tablets (landscape) */
+@media screen and (min-width: 927px) and (max-width: 1180px) {
+    body {
+        animation: zoomDiagonal 25s ease-in-out infinite;
+    }
+}
+
+/* Fix for iOS Safari height issue */
+@supports (-webkit-touch-callout: none) {
+    body {
+        height: -webkit-fill-available;
+    }
+}
+
+/* Fix for notched phones */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* ----------additional------------ */
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    overflow: hidden;
+    position: fixed;
+    /* Prevents mobile browser chrome from appearing/disappearing */
+}
+
+/* Base background styles */
+body {
+    background-color: rgb(4, 4, 35);
+    background-image: url(point.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* Forces image to cover exactly 100% width and height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mobile Devices (Portrait) */
+@media screen and (max-width: 428px) {
+    body {
+        background-size: cover;
+        background-attachment: fixed;
+        width: 100vw;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+
+    /* Force background to cover full screen */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        background-size: cover;
+        background-position: center center;
+        z-index: -1;
+    }
+}
+
+/* Mobile Devices (Landscape) */
+@media screen and (max-height: 428px) and (orientation: landscape) {
+    body {
+        background-size: cover;
+        background-attachment: fixed;
+        height: 100vh;
+        width: 100vw;
+    }
+}
+
+/* iOS Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll;
+        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
+    }
+
+    /* Additional fix for iOS full screen */
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: inherit;
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
+/* Android Specific Fixes */
+@supports not (-webkit-touch-callout: none) {
+    body {
+        background-attachment: fixed;
+        min-height: 100vh;
+        height: 100vh;
+    }
+}
+
+/* Handle notched phones */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Animation keyframes */
+/* @keyframes zoomInOut {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+} */
+
+/* Apply animation using transform instead of background-size for better performance */
+body {
+    animation: zoomInOut 10s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Container styles (adjust as needed for your content) */
+.container {
+    position: relative;
+    z-index: 1;
+    /* Rest of your container styles */
+}
+
+/* Add these styles to your existing CSS file */
+
+.notification-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#stop-alarm {
+    background-color: #ff4444;
+    color: white;
+}
+
+#stop-alarm:hover {
+    background-color: #cc0000;
+}
+
+#clear-notification {
+    background-color: #333;
+    color: white;
+}
+
+#clear-notification:hover {
+    background-color: #666;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 428px) {
+    .notification-controls {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        justify-content: center;
+    }
+}
