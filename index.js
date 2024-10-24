@@ -164,8 +164,8 @@ async function notifyUser(task) {
     }
 
     // Play alarm sound
-    var audio = new Audio("alarm.mp3");
-    await audio.play();
+    // var audio = new Audio("alarm.mp3");
+    // await audio.play();
 
     // Mark as notified
     notifiedTasks.add(task.id);
@@ -319,19 +319,6 @@ function viewAll() {
   addinmain(todoList);
 }
 
-function markTaskComplete(taskId) {
-  todoList.forEach((task) => {
-    if (task.id === taskId) {
-      task.complete = true; // Mark task as complete
-    }
-  });
-
-  update(); // Update UI
-  addinmain(todoList); // Refresh tasks list
-  saveToLocalStorage(); // Save updated list to local storage
-}
-
-// Initialize
 document.addEventListener("DOMContentLoaded", () => {
   loadFromLocalStorage();
   initializePushNotifications();
@@ -340,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.serviceWorker.addEventListener("message", (event) => {
       if (event.data && event.data.action === "completeTask") {
         const taskId = event.data.taskId;
-        markTaskComplete(taskId);
+        markTaskComplete(taskId); // Call the function to complete the task
       }
     });
   }
@@ -349,3 +336,15 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Initial Notification Permission:", Notification.permission);
   console.log("Service Worker Support:", "serviceWorker" in navigator);
 });
+
+function markTaskComplete(taskId) {
+  todoList.forEach((task) => {
+    if (task.id === taskId) {
+      task.complete = true; // Mark the task as complete
+    }
+  });
+
+  update(); // Update the UI
+  addinmain(todoList); // Refresh the task list
+  saveToLocalStorage(); // Save the updated list
+}
