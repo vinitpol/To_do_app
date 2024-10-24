@@ -240,11 +240,10 @@ function addinmain(todoList) {
   todoList.forEach((element) => {
     var x = `<li id=${element.id} class="todo-item">
                 <div>
-                    <p id="task"> ${
-                      element.complete
-                        ? `<strike>${element.task}</strike>`
-                        : element.task
-                    } </p>
+                    <p id="task"> ${element.complete
+        ? `<strike>${element.task}</strike>`
+        : element.task
+      } </p>
                     <small class="text-gray-500">
                         Due on ${new Date(element.dueDate).toLocaleString()}
                     </small>
@@ -268,13 +267,9 @@ setInterval(() => {
   todoList.forEach((task) => {
     if (!task.complete && task.dueDate <= now) {
       notifyUser(task);
-      task.complete = true;
-      update();
-      addinmain(todoList);
-      saveToLocalStorage();
     }
   });
-}, 10000);
+}, 1000);
 
 // Task Actions
 function deleteTodo(e) {
@@ -324,10 +319,31 @@ function viewAll() {
   addinmain(todoList);
 }
 
+function markTaskComplete(taskId) {
+  todoList.forEach((task) => {
+    if (task.id === taskId) {
+      task.complete = true; // Mark task as complete
+    }
+  });
+
+  update(); // Update UI
+  addinmain(todoList); // Refresh tasks list
+  saveToLocalStorage(); // Save updated list to local storage
+}
+
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   loadFromLocalStorage();
   initializePushNotifications();
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.addEventListener("message", (event) => {
+      if (event.data && event.data.action === "completeTask") {
+        const taskId = event.data.taskId;
+        markTaskComplete(taskId);
+      }
+    });
+  }
 
   // Log initial status
   console.log("Initial Notification Permission:", Notification.permission);
